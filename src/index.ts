@@ -16,7 +16,7 @@ client.on('ready', async () => {
 
 client.on('message', async msg  => {
   if (limit < 4000) {
-    if (msg.content[0] === '+' && ) {
+    if (msg.content[0] === '+') {
       if(msg.content.indexOf(' ') != -1){ 
         limit++;
         point = await test(msg.content.substring(1));
@@ -38,8 +38,7 @@ client.on('message', async msg  => {
   }else{
     talk = '미친놈들 이걸 4000번을 다 쓰네 나 돈없음 ㅅㄱ';
   }
-    await msg.reply(talk);
-  }
+  await msg.reply(talk);
 });
 
 client.login(process.env.token);
