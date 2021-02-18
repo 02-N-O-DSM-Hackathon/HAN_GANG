@@ -15,28 +15,24 @@ client.on('ready', async () => {
 });
 
 client.on('message', async msg  => {
-  if (limit < 4000) {
-    if (msg.content[0] === '+') {
-      if(msg.content.indexOf(' ') != -1){ 
-        limit++;
-        point = await test(msg.content.substring(1));
-        if (point == 1) {
-          talk = '긍정적인 사람!';
-        }else if(point == 0){
-          talk = '아니 적어도 긍정 부정 둘중에 하나는 해야지';
-        }else if(point == -1){
-          await rp(process.env.hangang, {json: true})
-          .then(response => {temp =  response['temp'];});
-          talk = `현재 한강물의 온도는 ${temp}도 입니다.`;
-        }else{
-          talk = 'ㅅㅂ 이게 에러나냐';
-        }
+  if (msg.content[0] === '+' && limit < 4000) {
+    if(msg.content.indexOf(' ') != -1){ 
+      limit++;
+      point = await test(msg.content.substring(1));
+      if (point == 1) {
+        talk = '긍정적인 사람!';
+      }else if(point == 0){
+        talk = '아니 적어도 긍정 부정 둘중에 하나는 해야지';
+      }else if(point == -1){
+        await rp(process.env.hangang, {json: true})
+        .then(response => {temp =  response['temp'];});
+        talk = `현재 한강물의 온도는 ${temp}도 입니다.`;
       }else{
-        talk = '문장으로 얘기해 주세요. 영어면 더 좋음';
+        talk = 'ㅅㅂ 이게 에러나냐';
       }
+    }else{
+      talk = '문장으로 얘기해 주세요. 영어면 더 좋음';
     }
-  }else{
-    talk = '미친놈들 이걸 4000번을 다 쓰네 나 돈없음 ㅅㄱ';
   }
   await msg.reply(talk);
 });
