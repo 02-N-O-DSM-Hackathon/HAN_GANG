@@ -20,7 +20,7 @@ client.on('message', async msg  => {
       limit++;
       point = await test(msg.content.substring(1));
       if (point == 1) {
-        talk = '긍정적인 사람!';
+        talk = '와 존나 긍정적이네';
       }else if(point == 0){
         talk = '아니 적어도 긍정 부정 둘중에 하나는 해야지';
       }else if(point == -1){
@@ -33,8 +33,9 @@ client.on('message', async msg  => {
     }else{
       talk = '문장으로 얘기해 주세요. 영어면 더 좋음';
     }
+
+    await msg.reply(talk);
   }
-  await msg.reply(talk);
 });
 
 client.login(process.env.token);
