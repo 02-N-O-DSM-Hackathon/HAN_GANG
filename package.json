@@ -1,0 +1,31 @@
+{
+  "name": "HAN_GANG",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/02-N-O-DSM-Hackathon/HAN_GANG.git",
+  "author": "titanv <a01098930999@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/",
+    "start:dev": "nodemon --exec ts-node src/index.ts",
+    "test": "jest --testEnvironment=node --verbose --forceExit",
+    "test:actions": "export uri=${{secrets.URI}} emailid=${{secrets.EMAILID}} emailpassword=${{secrets.EMAILPASSWORD}} secret=${{secrets.SECRET}} aessecret=${{secrets.AESSECRET}} jwtsecret=${{secrets.JWTSECRET}} jest --testEnvironment=node --verbose --forceExit --maxWorkers=1"
+  },
+  "dependencies": {
+    "@google-cloud/language": "^4.2.1",
+    "@types/node": "^14.14.17",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
